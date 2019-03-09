@@ -1,0 +1,17 @@
+.container{
+    margin-top: 10%;
+    height: 70% !important;
+}
+
+.row{
+    height: 100%;
+}
+.col-lg-4{
+    background: black;
+    height: 100%;
+}
+
+.col-lg-6{
+    background: #0c5460;
+    height: 100%;
+}

@@ -1,0 +1,33 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="index.html">
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/tag.css}">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
+</head>
+
+<body>
+<div layout:fragment="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-6">
+        <div class="tag_form">
+          <form th:action="create_tag" th:object="${tag}" method="post">
+            <button type="button" class="brush" data-toggle="modal" data-target="#myModal">
+              <i class="fas fa-paint-brush"></i>
+            </button>
+            <input id="color-input" type="hidden" name="color">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
