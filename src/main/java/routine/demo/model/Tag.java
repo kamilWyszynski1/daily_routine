@@ -4,6 +4,7 @@ package routine.demo.model;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.validator.constraints.Length;
+import routine.demo.EntityIdResolver;
 import routine.demo.seriallizer.TagSerializer;
 
 import javax.persistence.*;
@@ -12,7 +13,6 @@ import java.util.List;
 
 @Entity
 @JsonSerialize(using = TagSerializer.class)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Tag {
 
 
@@ -34,16 +34,16 @@ public class Tag {
     @Length(max = 200, message = "The description mu be less than 50 characters")
     private String description;
 
-    @OneToOne
-    private Color color;
+
+    private String color;
 
     @ManyToMany
     private List<Day> days = new ArrayList<>();
 
     @JsonCreator
-    public Tag(@Length(max = 50, message = "The name must be less than 50 characters") String title,
-               @Length(max = 200, message = "The description mu be less than 50 characters") String description,
-               Color color) {
+    public Tag(@Length(max = 50, message = "The name must be less than 50 characters") @JsonProperty("title") String title,
+               @Length(max = 200, message = "The description mu be less than 50 characters") @JsonProperty("description") String description,
+               @JsonProperty("color") String color) {
         this.title = title;
         this.description = description;
         this.color = color;
@@ -51,6 +51,14 @@ public class Tag {
 
     public Tag() {
 
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getTitle() {
@@ -67,14 +75,6 @@ public class Tag {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
     }
 
     public List<Day> getDays() {

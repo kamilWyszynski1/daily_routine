@@ -1,6 +1,7 @@
 package routine.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.validator.constraints.Length;
 import routine.demo.seriallizer.DaySerializer;
@@ -37,7 +38,8 @@ public class Day {
         this.id = id;
     }
 
-    public Day(@Length(max = 50, message = "The name must be less than 50 characters") String title, @Length(max = 200, message = "The description mu be less than 50 characters") String description) {
+    public Day(@JsonProperty("title") String title,
+               @JsonProperty("description") String description) {
         this.title = title;
         this.description = description;
     }

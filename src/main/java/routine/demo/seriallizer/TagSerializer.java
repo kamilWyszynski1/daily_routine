@@ -26,7 +26,7 @@ public class TagSerializer extends StdSerializer<Tag> {
         jsonGenerator.writeNumberField("id", tag.getId());
         jsonGenerator.writeStringField("title", tag.getTitle());
         jsonGenerator.writeStringField("description", tag.getDescription());
-        jsonGenerator.writeNumberField("color", tag.getColor().getId());
+        jsonGenerator.writeStringField("color", tag.getColor());
 
         if (tag.getDays().size() == 0 )
             jsonGenerator.writeStringField("books", null);

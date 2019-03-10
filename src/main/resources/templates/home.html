@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="index.html">
+<head>
+    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div class="row">
+        <div class="col-lg-4 ">
+            <div class="days_list">
+
+            </div>
+        </div>
+        <div class="col-lg-8">
+           <form>
+
+                   <input type="text" class="form-control day_title" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <label>Day title</label>
+               <div class="tags_container">
+w
+                </div>
+
+               <div class="md-form">
+                   <textarea id="form7" class="day_description md-textarea form-control" rows="3"></textarea>
+                   <label for="form7">Day description</label>
+               </div>
+               <div id="like_button_container">
+
+               </div>
+           </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Load our React component. -->
+
+</body>
+</html>

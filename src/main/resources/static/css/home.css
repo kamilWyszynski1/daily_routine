@@ -1,0 +1,72 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Courier New";
+}
+.container{
+    margin-top: 8%;
+    height: 60% !important;
+    background-color: #363435;
+    width: 80%;
+    border-radius: 40px;
+}
+.days_list{
+    margin-top: 15%;
+    height: 80%;
+    margin-left: 10%;
+    width: 80%;
+    background-color: #4e555b;
+}
+.row{
+    height: 100%;
+}
+.col-lg-4{
+    height: 100%;
+    border-right-style: solid;
+    border-color: white;
+    border-radius: 1px;
+}
+.col-lg-8{
+    height: 100%;
+}
+form{
+    height: 100%;
+}
+input, textarea{
+    resize: none;
+    color: white;
+    background-color: inherit;
+    border-radius: 10px;
+}
+.day_title{
+    width: 95% !important;
+    margin-top: 5%;
+    height: 5%;
+    background-color: inherit;
+
+}
+.tags_container{
+    margin-top: 6%;
+    background-color: #4e555b;
+    width: 95%;
+    height: 50%;
+}
+
+.day_description{
+    margin-top: 5%;
+    width: 95%;
+    height: 15%;
+    background-color: inherit;
+}
+
+label{
+    color: white;
+    font-family: "Courier New";
+}
+
+.day_description:focus, .day_title:focus {
+border-color: #ffce2e;
+}

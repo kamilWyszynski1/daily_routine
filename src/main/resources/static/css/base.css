@@ -3,10 +3,12 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    font-family: "Courier New";
 }
 .container{
-    margin-top: 10%;
-    height: 70% !important;
+    margin-top: 8%;
+    height: 60% !important;
 }
 
 .row{
@@ -19,8 +21,8 @@ html, body {
 
 .col-lg-6{
     border-radius: 30px;
-    padding: 0;
     background-color: #363435;
+    padding: 0;
     height: 30%;
     position: relative;
 }

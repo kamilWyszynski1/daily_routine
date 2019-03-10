@@ -1,33 +1,59 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="index.html">
 <head>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/tag.css}">
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
+    <script type="text/javascript" src="/static/js/angular.min.js" th:src="@{/js/angular.min.js}"></script>
+    <script type="text/javascript" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" th:src="@{/app/tags.controller.js}"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
 </head>
 
-<body>
-<div layout:fragment="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
+<body ng-app="tag_app" ng-controller="TagsController as vm" >
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
 
-      </div>
-      <div class="col-lg-2"></div>
-      <div class="col-lg-6">
-        <div class="tag_form">
-          <form th:action="create_tag" th:object="${tag}" method="post">
-            <button type="button" class="brush" data-toggle="modal" data-target="#myModal">
-              <i class="fas fa-paint-brush"></i>
-            </button>
-            <input id="color-input" type="hidden" name="color">
-          </form>
-        </div>
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+<div layout:fragment="content" class="container">
+  <div class="row">
+    <div class="col-lg-4 tag_list">
+      <div ng-repeat="tag in vm.tags | orderBy:'id'" class="tag" style="background-color: {{tag.color}}">
+        <p>{{tag.title}}</p>
+        <p>{{tag.description}}</p>
+        <button class="btn btn-primary" ng-click="vm.update(tag.id)"></button>
+        <button class="btn btn-danger" ng-click="vm.remove(tag.id)"></button>
+       </div>
+      <button type="button" class="btn btn-success" id="swap-tags" >Swap tags</button>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-6">
+      <form  class="tag_form"ng-model="tag" method="post" style="background-color: {{color}} !important;">
+        <label>Title</label>
+        <input type="text" class="tag_title_input" ng-model="title" /><br/>
+        <label>Description</label>
+        <input type="text" class="tag_desc_input" ng-model="description" /><br/>
+        <label>Color</label>
+        <input type="color" class="tag_color_input" ng-model="color" value="#00ff40"/><br/>
 
-      </div>
+        <input type="text" value="" hidden ng-model="id">
+
+        <button type="button" class="brush" data-toggle="modal" data-target="#myModal">
+          <i class="fas fa-paint-brush"></i>
+        </button>
+        <button id="form_button" type="submit" class="btn btn-primary" ng-click="vm.create()" >CREATE</button>
+      </form>
+
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("swap-tags").style.display = "none";
+</script>
 
 </body>
 </html>

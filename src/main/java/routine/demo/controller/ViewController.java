@@ -12,25 +12,26 @@ import routine.demo.model.*;
 @Grab("org.webjars:jquery:2.2.4")
 @RequestMapping(value = "")
 public class ViewController {
-    private ColorRepository colorRepository;
+
     private DayRepository dayRepository;
     private TagRepository tagRepository;
 
     @Autowired
-    public ViewController(ColorRepository colorRepository, DayRepository dayRepository, TagRepository tagRepository) {
-        this.colorRepository = colorRepository;
+    public ViewController( DayRepository dayRepository, TagRepository tagRepository) {
         this.dayRepository = dayRepository;
         this.tagRepository = tagRepository;
     }
 
     @RequestMapping(value = "")
     public String indexView(Model model){
-        return "index";
+        return "home";
     }
 
     @RequestMapping(value = "/tag")
     public String tagView(Model model){
         model.addAttribute("tag", new Tag());
+        model.addAttribute("tags", this.tagRepository.findAll());
         return "tag/base";
     }
+
 }

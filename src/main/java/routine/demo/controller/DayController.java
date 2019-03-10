@@ -26,10 +26,9 @@ public class DayController {
         return this.dayRepository.findById(id).orElse(null);
     }
 
-    @RequestMapping(value = "/create", method =RequestMethod.POST,
-                consumes = MediaType.APPLICATION_JSON_VALUE,
-                produces = MediaType.APPLICATION_JSON_VALUE)
-    public void createDay(Day day){
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public List<Day> createDay(@RequestBody Day day){
         this.dayRepository.save(day);
+        return Lists.newArrayList(this.dayRepository.findAll());
     }
 }
